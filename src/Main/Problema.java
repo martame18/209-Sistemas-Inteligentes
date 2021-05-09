@@ -72,15 +72,14 @@ public class Problema {
 		int pfilas = cfg.getNumFila();
 		int pcolums = cfg.getNumColumna();
 		
-		for (int y=0; y<pfilas; y++) {      //y es la columna en la que nos encontramos +1, porque la primera es para las coordenadas
-			for (int x=0; x<pcolums; x++) { //x es la fila en la que nos encontramos +1, porque la primera es para las coordenadas
+		for (int y=-1; y<pfilas; y++) {      //y es la columna en la que nos encontramos +1, porque la primera es para las coordenadas
+			for (int x=-1; x<pcolums; x++) { //x es la fila en la que nos encontramos +1, porque la primera es para las coordenadas
 				
-				if(x == 0 && y == 0) System.out.print("    ");
-				
-				if(y == 0){  //la primera fila es para imprimir las coordenadas:
+				if(x == -1 && y == -1) System.out.print("    ");
+				else if(y == -1){  //la primera fila es para imprimir las coordenadas:
 					if(x<=9) System.out.print(" 0"+x+" ");  //incluyo un 0 en las decenas de los menores de 10 para que el tamaño de la tabla sea uniforme
 					else System.out.print(" "+x+" ");
-				} else if (x == 0) { //la primera columna es para imprimir las coordenas:
+				} else if (x == -1) { //la primera columna es para imprimir las coordenas:
 					if(y<=9) System.out.print(" 0"+y+" ");
 					else System.out.print(" "+y+" ");
 				
