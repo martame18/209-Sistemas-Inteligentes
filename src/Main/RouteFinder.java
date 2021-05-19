@@ -1,6 +1,8 @@
 package Main;
 
 
+import java.util.Arrays;
+
 import robocode.control.BattleSpecification;
 import robocode.control.BattlefieldSpecification;
 import robocode.control.RobocodeEngine;
@@ -95,16 +97,31 @@ public class RouteFinder {
 	     * Creamos un robot sittingDuck por cada obstáculo.
 		 */
 		
-		double sittingDuckFila = 325.0, sittingDuckColumna = 425.0, arriba = 0.0;	 //Temporal
-		
 		int obstaculos = cfg.getNumObstaculos();
+		int i=0;
 		
+		while((obstaculos > 0) && (i<cfg.nfila)){
+			int j = 0;
+			while((obstaculos > 0) && (j<cfg.nColumna)) {
+				if(nuevoProblema.campoBatalla[i][j]._esObstaculo == true) {
+					existingRobots[1] 	= modelRobots[1];    //sittingDuck
+					robotSetups[1]		= new RobotSetup(i+25.0, j+25.0 , 0.0);
+					obstaculos --;
+					System.out.println("Generados "+obstaculos+"  sitting ducks.");
+				}
+				j++;
+			}
+			i++;
+		}
+		
+		//double sittingDuckFila = 325.0, sittingDuckColumna = 425.0, arriba = 0.0;	 //Temporal
+		/*
 		if (obstaculos > 0) {
 			existingRobots[1] 	= modelRobots[1];   //sittingDuck
 			robotSetups[1]		= new RobotSetup( sittingDuckFila, sittingDuckColumna ,  arriba);   
 			
 			System.out.println("Generados "+obstaculos+"  sitting ducks.");
-		}
+		}*/
 	}
 	
 	/***************

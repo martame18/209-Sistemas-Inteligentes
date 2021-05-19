@@ -11,13 +11,15 @@ public class Problema {
 	
 	// Construimos Estado Inicial, Final y Malla de obstÃ¡culos en esta clase.
 	
-	private Casilla campoBatalla [] [];
+	public Casilla campoBatalla [] [];
 	
 	private int semilla;
 	private int numObstaculos;
 	// estas variables me sirven para ahorrar un bucle en routefinder
 	public int filainicial;
 	public int columnainicial;
+	public int filafinal;
+	public int columnafinal;
 	
 	//método para comprobar si una casilla ya ha sido seleccionada antes, para no sobreponer obstáculos
 	private boolean casillaOcupada (int fila, int columna) {
@@ -67,6 +69,8 @@ public class Problema {
 				if((porcolocar-numObstaculos)==1) {  //si es la segunda casilla que coloca, se convierte en la final
 					campoBatalla[cfila][ccol].pfinal = true;
 					porcolocar--;
+					filafinal = cfila;
+					columnafinal = ccol;
 				} else {   //si ya se han colocado las casillas inicial y final, entonces lo colocamos como obstáculo
 					campoBatalla[cfila][ccol]._esObstaculo = true;
 					porcolocar--;
@@ -110,9 +114,5 @@ public class Problema {
 		}
 	}
 
-	
-	public Casilla[][] getCampoBatalla() {
-		return campoBatalla;
-	}
 	
 }
