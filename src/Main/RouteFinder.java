@@ -1,13 +1,11 @@
 package Main;
 
 
-
 import robocode.control.BattleSpecification;
 import robocode.control.BattlefieldSpecification;
 import robocode.control.RobocodeEngine;
 import robocode.control.RobotSetup;
 import robocode.control.RobotSpecification;
-
 
 
 /**
@@ -25,8 +23,8 @@ public class RouteFinder {
 	 * 
 	 */
 	
-	//static String robocodeLocalization=  "C:\\Robocode"; //Windows
-	static String	 robocodeLocalization= "/Users/joseamontenegromontes/robocode"; //MAC o Linux"
+	static String robocodeLocalization=  "C:\\Robocode"; //Windows
+	// static String	 robocodeLocalization= "/Users/joseamontenegromontes/robocode"; //MAC o Linux"
 	static String    nombreRobot ="Robot.RobotBusqueda*";
 	
 	/**
@@ -44,9 +42,9 @@ public class RouteFinder {
 	public  RouteFinder () {
 		 cfg = new Configuracion();	
 
-		//ToDo: GENERAR EL MAPA DE OBSTÁCULOS Y LAS POSICIONES INICIAL Y FINAL DEL ROBOT
+		//ToDo: GENERAR EL MAPA DE OBSTÃ�CULOS Y LAS POSICIONES INICIAL Y FINAL DEL ROBOT
 		
-		Problema 		nuevoProblema = new Problema (cfg);			
+		Problema nuevoProblema = new Problema (cfg);			
 	}
 	
 	/******************
@@ -55,7 +53,7 @@ public class RouteFinder {
 	
 	public void cfgRobocode() {
 		
-		// Crear el RobocodeEngine desde una la instalación
+		// Crear el RobocodeEngine desde una la instalaciÃ³n
 			 engine = new RobocodeEngine(new java.io.File(robocodeLocalization)); //Ojo configuración 
 			 engine.setVisible(true); // Mostrar el simulador de Robocode
 			
@@ -72,14 +70,14 @@ public class RouteFinder {
 	}
 	
 	/*************************************
-	 *  Añado el Robot de Búsqueda
+	 *  AÃ±ado el Robot de Búsqueda
 	 */
 	
 	public void addRobotBusqueda() {
 		
 		/*
 	     * Creamos primero nuestro propio robot y lo colocamos en la posición inicial del problema,
-	     * que deberá estar libre de obstáculo.
+	     * que debería estar libre de obstáculoa.
 		 */
 		
 		double fila = 125.0, columna = 125.0, arriba = 0.0;			//Temporal
@@ -110,7 +108,7 @@ public class RouteFinder {
 	}
 	
 	/***************
-	 * Ejecución
+	 * EjecuciÃ³n
 	 */
 	public void run () {
 		

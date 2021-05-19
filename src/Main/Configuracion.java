@@ -1,5 +1,7 @@
 package Main;
 
+// en esta clase se establece la configuración inicial del problema
+
 public class Configuracion {
 	int _numObstaculos, _semilla;
 	

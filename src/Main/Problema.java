@@ -2,6 +2,11 @@ package Main;
 
 import java.util.Random;
 
+import robocode.control.RobotSetup;
+import robocode.control.RobotSpecification;
+
+// esta clase sirve para crear el problema
+
 public class Problema {
 	
 	// Construimos Estado Inicial, Final y Malla de obstÃ¡culos en esta clase.
@@ -23,7 +28,6 @@ public class Problema {
 	}
 	
 	//método para inicializar las casillas del campo de batalla
-	
 	private void inicializarCampo(Configuracion cfg) {
 		campoBatalla = new Casilla [cfg.getNumFila()] [cfg.getNumColumna()];
 		for (int i=0; i<cfg.getNumFila(); i++) {
@@ -42,6 +46,7 @@ public class Problema {
 		
 		inicializarCampo(cfg);
 		
+		//esta parte es para asignar un lugar a los obstáculos, la posición inicial y final
 		int porcolocar = numObstaculos+2; //variable que indica las casillas que quedan por colocar
 		int cfila, ccol; //variables auxiliares para el bucle
 		//el bucle se va a repetir mientras que no se hayan repartido todos los obstáculos y los estados inicial y final
@@ -63,11 +68,12 @@ public class Problema {
 				}
 			}
 		}
+		
 		printearCampo (cfg);
 		
 	}
 	
-	//método para mostrar por pantalla el campo de batalla
+	//método para mostrar por pantalla una matriz con el campo de batalla
 	private void printearCampo(Configuracion cfg) { 
 		int pfilas = cfg.getNumFila();
 		int pcolums = cfg.getNumColumna();
@@ -98,4 +104,5 @@ public class Problema {
 			System.out.println("\n");
 		}
 	}
+
 }
