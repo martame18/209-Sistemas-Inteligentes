@@ -38,13 +38,14 @@ public class RouteFinder {
 	RobotSpecification[] existingRobots;
 	RobotSetup		  [] robotSetups ;
 	
+	Problema nuevoProblema;
 	
 	public  RouteFinder () {
 		 cfg = new Configuracion();	
 
 		//ToDo: GENERAR EL MAPA DE OBSTÃ�CULOS Y LAS POSICIONES INICIAL Y FINAL DEL ROBOT
 		
-		Problema nuevoProblema = new Problema (cfg);			
+		nuevoProblema = new Problema (cfg);		
 	}
 	
 	/******************
@@ -70,17 +71,16 @@ public class RouteFinder {
 	}
 	
 	/*************************************
-	 *  AÃ±ado el Robot de Búsqueda
+	 *  Añado el Robot de Búsqueda
 	 */
 	
-	public void addRobotBusqueda() {
-		
+	public void addRobotBusqueda() {		
 		/*
 	     * Creamos primero nuestro propio robot y lo colocamos en la posición inicial del problema,
 	     * que debería estar libre de obstáculoa.
 		 */
 		
-		double fila = 125.0, columna = 125.0, arriba = 0.0;			//Temporal
+		double fila = nuevoProblema.filainicial+25.0 , columna = nuevoProblema.columnainicial+25.0 , arriba = 0.0;			//Temporal
 		existingRobots[0] = modelRobots[0];
 		robotSetups	  [0] = new RobotSetup(fila,  columna,  arriba);       //orientación inicial	
 	}

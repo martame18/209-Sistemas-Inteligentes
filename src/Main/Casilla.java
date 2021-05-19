@@ -21,8 +21,4 @@ public class Casilla {
 		else return false;
 	}
 	
-	// indica las coordenadas en las que tiene que situarse el robot para que esté centrado en la casilla
-	public void lugarRobot() {
-		RobotSetup cfgRobot = new RobotSetup(_fila+25.0, _columna+25.0, 0.0 );
-	}
 }

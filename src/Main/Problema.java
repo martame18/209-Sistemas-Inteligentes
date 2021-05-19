@@ -15,6 +15,9 @@ public class Problema {
 	
 	private int semilla;
 	private int numObstaculos;
+	// estas variables me sirven para ahorrar un bucle en routefinder
+	public int filainicial;
+	public int columnainicial;
 	
 	//método para comprobar si una casilla ya ha sido seleccionada antes, para no sobreponer obstáculos
 	private boolean casillaOcupada (int fila, int columna) {
@@ -57,6 +60,8 @@ public class Problema {
 			if ((porcolocar-numObstaculos)==2) { //si es la primera casilla que coloca, se convierte en la inicial
 				campoBatalla[cfila][ccol].pinicial = true;
 				porcolocar--;
+				filainicial = cfila;
+				columnainicial = ccol;
 			}
 			if (!casillaOcupada(cfila,ccol)) {  //comprueba que la casilla generada no esté ocupada
 				if((porcolocar-numObstaculos)==1) {  //si es la segunda casilla que coloca, se convierte en la final
@@ -105,4 +110,9 @@ public class Problema {
 		}
 	}
 
+	
+	public Casilla[][] getCampoBatalla() {
+		return campoBatalla;
+	}
+	
 }
