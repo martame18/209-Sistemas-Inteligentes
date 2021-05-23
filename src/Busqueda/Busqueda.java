@@ -14,7 +14,12 @@ public abstract class Busqueda {
 	Configuracion cfg;
 	Problema nuevoProblema;
 	
-	Casilla lainicial, lafinal;
+	Casilla lainicial, lafinal;  //guardamos en estas variables las casillas inicial y final
+	
+	List <Casilla> abiertos;     //conjunto de nodos abiertos
+	HashSet <Casilla> cerrados;  //conjunto de nodos cerrados 
+	List <Accion> camino;        //conjunto de pasos necesarios para llegar de la posición inicial a la final
+	
 	public Busqueda (Problema p){
 		cfg = new Configuracion();
 		nuevoProblema = new Problema(cfg);
