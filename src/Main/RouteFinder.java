@@ -79,10 +79,10 @@ public class RouteFinder {
 	public void addRobotBusqueda() {		
 		/*
 	     * Creamos primero nuestro propio robot y lo colocamos en la posición inicial del problema,
-	     * que debería estar libre de obstáculoa.
+	     * que debería estar libre de obstáculos.
 		 */
 		
-		double fila = nuevoProblema.filainicial+25.0 , columna = nuevoProblema.columnainicial+25.0 , arriba = 0.0;			//Temporal
+		double fila = nuevoProblema.filainicial+25.0 , columna = nuevoProblema.columnainicial+25.0 , arriba = 0.0;		
 		existingRobots[0] = modelRobots[0];
 		robotSetups	  [0] = new RobotSetup(fila,  columna,  arriba);       //orientación inicial	
 	}
@@ -154,7 +154,7 @@ public class RouteFinder {
 	}
 	
 	/********************************************
-	 * Ejercutar
+	 * Ejecutar
 	 * @param args
 	 */
 	

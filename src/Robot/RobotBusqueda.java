@@ -4,6 +4,8 @@ import static robocode.util.Utils.normalRelativeAngleDegrees;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import Busqueda.Accion;
+import Main.Casilla;
 import Main.Configuracion;
 import Main.Problema;
 import robocode.Robot;
@@ -90,5 +92,14 @@ public class RobotBusqueda extends Robot {
 	   */
 	}
 	
+	// método para hacer que el robot avance de a a b
+	public void andar(Casilla a, Casilla b) {
+		Accion ac = new Accion(a,b);
+		if (ac.comprobarObstaculo(b)) {
+			turnRight(normalRelativeAngleDegrees ( ac.grados() - getHeading()));
+			ahead(cfg.getTamCelda());
+		}
+	}
+
 	
 }
