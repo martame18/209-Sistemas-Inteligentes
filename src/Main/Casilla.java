@@ -10,10 +10,17 @@ public class Casilla {
 	public boolean _esObstaculo = false;
 	public boolean pinicial = false;
 	public boolean pfinal = false;
-		
+	public Casilla padre;
+	
 	public Casilla (int filaP, int columnaP){
 		_fila 		= filaP;
 		_columna 	= columnaP;
+		padre = null;
+	}
+	public Casilla (int filaP, int columnaP, Casilla p){
+		_fila 		= filaP;
+		_columna 	= columnaP;
+		padre = p;
 	}
 	
 	public boolean ocupada() {

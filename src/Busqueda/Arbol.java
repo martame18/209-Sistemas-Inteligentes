@@ -17,6 +17,14 @@ public class Arbol {
 		izquierda = null;
 	}
 	
+	Arbol(){
+		raiz = null;
+		arriba = null;
+		abajo = null;
+		derecha = null;
+		izquierda = null;
+	}
+	
 	public boolean esVacio(Arbol a) {
 		boolean vacio = false;
 		if(a.raiz == null) vacio = true;

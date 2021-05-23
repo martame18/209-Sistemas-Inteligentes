@@ -1,6 +1,7 @@
 package Busqueda;
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -26,6 +27,14 @@ public abstract class Busqueda {
 		
 		lainicial = nuevoProblema.getIniciale();
 		lafinal = nuevoProblema.getFinale();
+		
+		abiertos = new ArrayList <Casilla>();
+		camino = new ArrayList <Accion>();
+		cerrados = new HashSet<Casilla>();
+		// para asegurar que las listas empiezan vacias
+		abiertos.clear();
+		cerrados.clear();   
+		camino.clear();     
 	}
 	
 	abstract public boolean ejecutar();
