@@ -25,7 +25,7 @@ public class RouteFinder {
 	 * 
 	 */
 	
-	static String robocodeLocalization=  "C:\\Robocode"; //Windows
+	static String robocodeLocalization=  "C:\\robocode"; //Windows
 	// static String	 robocodeLocalization= "/Users/joseamontenegromontes/robocode"; //MAC o Linux"
 	static String    nombreRobot ="Robot.RobotBusqueda*";
 	
