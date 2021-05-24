@@ -17,7 +17,7 @@ import robocode.control.RobotSpecification;
  * Plantilla para la práctica de algoritmos de búsqueda con Robocode 
  * 
  * 
- */
+ */ 
 
 public class RouteFinder {
 	/**
@@ -82,9 +82,11 @@ public class RouteFinder {
 	     * que debería estar libre de obstáculos.
 		 */
 		
-		double fila = nuevoProblema.filainicial+25.0 , columna = nuevoProblema.columnainicial+25.0 , arriba = 0.0;		
+		double fila = (nuevoProblema.getIniciale()._fila *cfg._tamCelda) + (cfg._tamCelda/2) ;
+		double columna = (nuevoProblema.getFinale()._columna *cfg._tamCelda) + (cfg._tamCelda/2) ;
+		double arriba = 0.0;		
 		existingRobots[0] = modelRobots[0];
-		robotSetups	  [0] = new RobotSetup(fila,  columna,  arriba);       //orientación inicial	
+		robotSetups	  [0] = new RobotSetup(columna, fila, arriba);       //orientación inicial	
 	}
 
 	/*************************************
@@ -98,16 +100,17 @@ public class RouteFinder {
 		 */
 		
 		int obstaculos = cfg.getNumObstaculos();
+		double fila, columna, arriba = 0.0;
 		int i=0;
-		
 		while((obstaculos > 0) && (i<cfg.nfila)){
 			int j = 0;
 			while((obstaculos > 0) && (j<cfg.nColumna)) {
 				if(nuevoProblema.campoBatalla[i][j]._esObstaculo == true) {
 					existingRobots[obstaculos] 	= modelRobots[1];    //sittingDuck
-					robotSetups[obstaculos]		= new RobotSetup(i+25.0, j+25.0 , 0.0); // le sumo 25 porque las casillas son de 50*50, para que salgan centrados
+					fila = i*cfg._tamCelda + (cfg._tamCelda/2);
+					columna = j*cfg._tamCelda + (cfg._tamCelda/2);
+					robotSetups[obstaculos]		= new RobotSetup(columna, fila , arriba); // le sumo 25 porque las casillas son de 50*50, para que salgan centrados
 					obstaculos --;
-					System.out.println("Generados "+obstaculos+"  sitting ducks. En x: "+i+"   y: "+j);
 				}
 				j++;
 			}

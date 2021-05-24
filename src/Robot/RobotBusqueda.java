@@ -24,7 +24,7 @@ import robocode.Robot;
 public class RobotBusqueda extends Robot {
 
 	Configuracion cfg;
-	
+	Problema problem;
 	
 	//The main method in every robot
 	public void run() {
@@ -53,7 +53,7 @@ public class RobotBusqueda extends Robot {
 		//  1. GENERARSE EL PROBLEMA DE BÃšSQUEDA
 		//  2. BUSCAR LA SOLUCIÃ“N CON UN ALGORITMO DE BÃšSQUEDA
 		//  3. EJECUTAR LA SOLUCIÃ“N ENCONTRADA
-		Problema problem = new Problema(cfg);
+		problem = new Problema(cfg);
 		
 		
 	}
@@ -81,15 +81,18 @@ public class RobotBusqueda extends Robot {
 	    for(int j=0; j<=columna; j++) {
 	    	g.drawLine((tamCelda*j), 0, (tamCelda*j), columnaPixels);
 	    }
-	    /*
+	    
+	    
 	   // dibujar un cuadrado verde en la posición inicial
 	   g.setColor(Color.green);
-	   g.drawRect((problem.filainicial*filaPixels + 35),(problem.columnainicial*columnaPixels +35), 15, 15);
+	   g.fillRect ((tamCelda*(problem.getIniciale()._columna + 1) -15),
+			    (tamCelda*(problem.getIniciale()._fila + 1) -15), 15, 15);
+
 	   
 	   //dibujar un cuadrado rojo en la posición final
 	   g.setColor(Color.red);
-	   g.drawRect((problem.filafinal*filaPixels + 35),(problem.columnafinal*columnaPixels +35), 15, 15);
-	   */
+	   g.fillRect ((tamCelda*(problem.getFinale()._columna + 1) -15),
+			    (tamCelda*(problem.getFinale()._fila + 1) -15), 15, 15);
 	}
 	
 	// método para hacer que el robot avance de a a b

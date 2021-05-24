@@ -16,10 +16,6 @@ public class Problema {
 	private int semilla;
 	private int numObstaculos;
 	// estas variables me sirven para ahorrar un bucle en routefinder
-	public int filainicial;
-	public int columnainicial;
-	public int filafinal;
-	public int columnafinal;
 	private Casilla iniciale;
 	private Casilla finale;
 	
@@ -84,11 +80,11 @@ public class Problema {
 	
 	//método para mostrar por pantalla una matriz con el campo de batalla
 	private void printearCampo(Configuracion cfg) { 
-		int pfilas = cfg.getNumFila();
-		int pcolums = cfg.getNumColumna();
+		int pfilas = cfg.getNumFila();     //   y = fila
+		int pcolums = cfg.getNumColumna(); //   x = columna
 		
-		for (int y=-1; y<pfilas; y++) {      //y es la columna en la que nos encontramos +1, porque la primera es para las coordenadas
-			for (int x=-1; x<pcolums; x++) { //x es la fila en la que nos encontramos +1, porque la primera es para las coordenadas
+		for (int y=-1; y<pcolums; y++) {      //y es la columna en la que nos encontramos +1, porque la primera es para las coordenadas
+			for (int x=-1; x<pfilas; x++) { //x es la fila en la que nos encontramos +1, porque la primera es para las coordenadas
 				
 				if(x == -1 && y == -1) System.out.print("    ");
 				else if(y == -1){  //la primera fila es para imprimir las coordenadas:
@@ -98,10 +94,10 @@ public class Problema {
 					if(y<=9) System.out.print(" 0"+y+" ");
 					else System.out.print(" "+y+" ");
 				
-				} else if (casillaOcupada(y, x)) {  //si la casilla está ocupada comprueba si es obstáculo, inicial o final
-					if (campoBatalla[y][x].pinicial == true){ //si es la casilla inicial imprime "I"
+				} else if (casillaOcupada(x, y)) {  //si la casilla está ocupada comprueba si es obstáculo, inicial o final
+					if (campoBatalla[x][y].pinicial == true){ //si es la casilla inicial imprime "I"
 						System.out.print(" I  ");
-					} else if (campoBatalla[y][x].pfinal == true) {  //si es la casilla final imprime "F"
+					} else if (campoBatalla[x][y].pfinal == true) {  //si es la casilla final imprime "F"
 						System.out.print(" F  ");
 					} else {  //si es un obstáculo imprime "X"
 						System.out.print(" X  ");
@@ -113,7 +109,6 @@ public class Problema {
 			System.out.println("\n");
 		}
 	}
-
 	public Casilla getIniciale() {
 		return iniciale;
 	}
