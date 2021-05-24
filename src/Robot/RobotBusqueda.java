@@ -97,7 +97,7 @@ public class RobotBusqueda extends Robot {
 		Accion ac = new Accion(a,b);
 		if (ac.comprobarObstaculo(b)) {
 			turnRight(normalRelativeAngleDegrees ( ac.grados() - getHeading()));
-			ahead(cfg.getTamCelda());
+			ahead(cfg.getTamCelda()); 
 		}
 	}
 

@@ -65,7 +65,7 @@ public class RouteFinder {
 			
 				
 		// En modelRobots recogemos la especificación de los robots que utilizaremos en la simulación.
-			 modelRobots = engine.getLocalRepository(nombreRobot+",sample.SittingDuck");
+			 modelRobots = engine.getLocalRepository(nombreRobot+", sample.SittingDuck");
 				
 		// Incluiremos un robot sittingDuck por obstáculo, más nuestro propio robot.
 			 existingRobots =	new RobotSpecification[cfg.getNumObstaculos()+1];
@@ -104,10 +104,10 @@ public class RouteFinder {
 			int j = 0;
 			while((obstaculos > 0) && (j<cfg.nColumna)) {
 				if(nuevoProblema.campoBatalla[i][j]._esObstaculo == true) {
-					existingRobots[1] 	= modelRobots[1];    //sittingDuck
-					robotSetups[1]		= new RobotSetup(i+25.0, j+25.0 , 0.0);
+					existingRobots[obstaculos] 	= modelRobots[1];    //sittingDuck
+					robotSetups[obstaculos]		= new RobotSetup(i+25.0, j+25.0 , 0.0); // le sumo 25 porque las casillas son de 50*50, para que salgan centrados
 					obstaculos --;
-					System.out.println("Generados "+obstaculos+"  sitting ducks.");
+					System.out.println("Generados "+obstaculos+"  sitting ducks. En x: "+i+"   y: "+j);
 				}
 				j++;
 			}
