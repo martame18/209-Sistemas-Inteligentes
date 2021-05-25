@@ -8,6 +8,7 @@ public class Accion {
 	public enum accion {izquierda,derecha,arriba,abajo};
 	
 	accion action;
+
 	Configuracion cfg;
 	
 	//suponemos que la accion se produce entre casillas colindantes
@@ -16,11 +17,15 @@ public class Accion {
 		
 		if(comprobarObstaculo(b)){  //si b no está ocupado
 			
+			// hacemos varias comprobaciones para además asegurarnos de que son casillas colindantes
+			// nombre del movimiento en función de cómo se mueve en la pantalla de robocode, no en la matriz del código
 			if(b._fila == a._fila) {
-				if(a._columna < b._columna) action = accion.arriba;
-				else  action = accion.abajo;
-			} else if (a._fila < b._fila) action = accion.derecha;
-			else  action = accion.izquierda;
+				if(b._columna - a._columna == 1) action = accion.derecha;
+				else if (a._columna - b._columna == 1) action = accion.izquierda;
+			} else if (a._columna == b._columna) {
+				if (b._fila - a._fila == 1) action = accion.arriba;
+				else if (a._fila - b._fila == 1) action = accion.abajo;
+			}
 			
 		}
 		else action = null;
@@ -43,5 +48,9 @@ public class Accion {
 		case izquierda: grados = 270; break;
 		}
 		return grados;
+	}
+	
+	public accion getAction() {
+		return action;
 	}
 }

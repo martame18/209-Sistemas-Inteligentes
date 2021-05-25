@@ -40,8 +40,7 @@ public abstract class Busqueda {
 	abstract public boolean ejecutar();
 	
 	public List<Accion> getCamino (){
-	
-		return null;
+		return camino;
 	}	
 	
 	public String getName() {
@@ -49,25 +48,23 @@ public abstract class Busqueda {
 	}
 		
 	public List <Casilla> getAbierto(){
-		return null;
+		return abiertos;
 	}
 	
 	public HashSet	<Casilla> getCerrados() {
-		return  null;
+		return cerrados;
 	}
 	
 	public int getNumNodosExtendidos() {
-		return 0;
+		return cerrados.size();
 	}
 	
 	public int getNumMaxAbiertos() {
-		return 0;
+		return abiertos.size();
 	}
 	
 	public int getCoste (){
-		int gasto = 0;
-		
-		
+		int gasto = camino.size();
 		return gasto;
 	}	
 }

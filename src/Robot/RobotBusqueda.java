@@ -55,7 +55,6 @@ public class RobotBusqueda extends Robot {
 		//  3. EJECUTAR LA SOLUCIÃ“N ENCONTRADA
 		problem = new Problema(cfg);
 		
-		
 	}
 
 
@@ -85,24 +84,22 @@ public class RobotBusqueda extends Robot {
 	    
 	   // dibujar un cuadrado verde en la posición inicial
 	   g.setColor(Color.green);
-	   g.fillRect ((tamCelda*(problem.getIniciale()._columna + 1) -15),
-			    (tamCelda*(problem.getIniciale()._fila + 1) -15), 15, 15);
+	   g.fillRect ((tamCelda*(problem.getIniciale()._columna + 1) -10),
+			    (tamCelda*(problem.getIniciale()._fila + 1) -10), 10, 10);
 
 	   
 	   //dibujar un cuadrado rojo en la posición final
 	   g.setColor(Color.red);
-	   g.fillRect ((tamCelda*(problem.getFinale()._columna + 1) -15),
-			    (tamCelda*(problem.getFinale()._fila + 1) -15), 15, 15);
+	   g.fillRect ((tamCelda*(problem.getFinale()._columna + 1) -10),
+			    (tamCelda*(problem.getFinale()._fila + 1) -10), 10, 10);
 	}
 	
-	// método para hacer que el robot avance de a a b
-	public void andar(Casilla a, Casilla b) {
-		Accion ac = new Accion(a,b);
-		if (ac.comprobarObstaculo(b)) {
+	// método para hacer que el robot avance según la acción indicada
+	public void andar(Accion ac) {
+		if (ac.getAction() != null) {  //action es null cuando no puede avanzar en esa dirección (por un obstáculo o pared)
 			turnRight(normalRelativeAngleDegrees ( ac.grados() - getHeading()));
 			ahead(cfg.getTamCelda()); 
 		}
 	}
-
 	
 }
