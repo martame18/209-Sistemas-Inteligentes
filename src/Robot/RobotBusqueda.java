@@ -3,8 +3,11 @@ package Robot;
 import static robocode.util.Utils.normalRelativeAngleDegrees;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.Iterator;
+import java.util.List;
 
 import Busqueda.Accion;
+import Busqueda.BusquedaAmplitud;
 import Main.Casilla;
 import Main.Configuracion;
 import Main.Problema;
@@ -54,9 +57,18 @@ public class RobotBusqueda extends Robot {
 		//  2. BUSCAR LA SOLUCIÃ“N CON UN ALGORITMO DE BÃšSQUEDA
 		//  3. EJECUTAR LA SOLUCIÃ“N ENCONTRADA
 		problem = new Problema(cfg);
-		
+		BusquedaAmplitud ampli = new BusquedaAmplitud(problem);
+		ejecutarSolucion(ampli);
 	}
 
+private void ejecutarSolucion(BusquedaAmplitud ampli) {
+		ampli.ejecutar();
+		List <Accion> camino = ampli.getCamino();
+		Iterator <Accion> it = camino.iterator();
+		while (it.hasNext()) {
+			andar(it.next());
+		}
+	}
 
 /***
 * EstÃ© mÃ©todo se ejecutarÃ¡ cuÃ¡ndo se pulse el botÃ³n Pintar
@@ -99,6 +111,7 @@ public class RobotBusqueda extends Robot {
 		if (ac.getAction() != null) {  //action es null cuando no puede avanzar en esa dirección (por un obstáculo o pared)
 			turnRight(normalRelativeAngleDegrees ( ac.grados() - getHeading()));
 			ahead(cfg.getTamCelda()); 
+			System.out.println("Movimiento: "+ac.getAction());
 		}
 	}
 	
