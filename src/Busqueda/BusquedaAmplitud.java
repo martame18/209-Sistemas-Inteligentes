@@ -29,7 +29,7 @@ public class BusquedaAmplitud extends Busqueda {
 	
 	public void buscar() {
 		Casilla aux = null;
-		while (!abiertos.isEmpty()) { 
+		while (!abiertos.isEmpty() && camino.isEmpty()) { 
 			//    paso 2.1 - 2.2
 			// se pasar el primer nodo de abiertos a cerrados y se guarda en la casilla aux
 			aux = abiertos.get(0);
@@ -65,6 +65,7 @@ public class BusquedaAmplitud extends Busqueda {
 		return camino;
 	} 
 	
+	// método para expandir la casilla aux, añadiendo sus colindantes a abiertos
 	private void expandir (Casilla aux) {
 		Casilla nuevacas;
 		//    paso 2.5
@@ -103,31 +104,24 @@ public class BusquedaAmplitud extends Busqueda {
 		}
 	}
 	
+	// método para comprobar si la casilla dada es nueva, si lo es se añade a abiertos y si no se comprueba si es mejor la previamente explorada o esta
 	private void expandirLado(Casilla nuevacas) {
 		//    paso 2.5.1
 		// si el nodo es nuevo se añade a abiertos
 		if (compruebaAbiertos(nuevacas) == -1 && compruebaCerrados(nuevacas) == -1) {   
 			abiertos.add(nuevacas);    		
-		} else {   
+		} 
 		//    paso 2.5.2
-		// si el nodo ya estaba en el árbol comprueba cuál tiene un coste menor
-			// si ya el nodo anterior está cerrado es que se ha explorado y expandido antes, por lo que tendrá menor coste y no se sustituye
-			// si el nodo anterior está abierto se comprueba cuál tiene menor coste y se descarta el otro
-				/*		
-			if (compruebaAbiertos (nuevacas) >= 0) {
-				List <Accion> caminoA = devuelveCamino(abiertos.get(compruebaAbiertos(nuevacas)));
-				List <Accion> caminoB = devuelveCamino(nuevacas);
-				if (caminoB.size() > caminoA.size()) {
-					abiertos.remove(compruebaAbiertos(nuevacas));
-					abiertos.add(nuevacas);
-				}
-			}*/
-						
-		}
+		// al usar una cola FIFO en abiertos, si el nodo ya estaba en el árbol hay dos opciones:
+		// 1. estaba en cerrados: por lo que el nodo habría sido explorado antes del actual, lo que implica que su camino tiene menor coste.
+		// 2. estaba en abiertos: por lo que el nodo habría sido expandido desde el mismo nodo padre que el actual o desde uno anterior,
+		//                        en cualquiera de los dos casos tendría un coste o menor o igual que el camino del nodo actual.
+		// En conclusión: si el nodo actual ya se encuentra en abiertos o en cerrados no es necesario sustituirlo.
+		
 		
 	}
 
-	// métodos para comprobar que la casilla sea nueva: si son false lo es, si alguno es true ya estaba en el árbol
+	// métodos para comprobar que la casilla sea nueva: si son -1 lo es, si alguno es distinto ya estaba en el árbol
 	private int compruebaAbiertos(Casilla aux) {
 		int sta = -1;
 		int indice = 0;
@@ -138,7 +132,7 @@ public class BusquedaAmplitud extends Busqueda {
 			}
 			indice ++;
 		}
-		return sta;
+		return sta;  //devuelve -1 si no está en abiertos, si está devuelve el índice de su posición en la lista
 	}
 	private int compruebaCerrados(Casilla aux) {
 		int sta = -1;

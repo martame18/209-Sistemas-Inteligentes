@@ -35,5 +35,9 @@ public class Casilla implements Comparable{
 		else if (oc._columna != this._columna) igual = 1;
 		return igual;
 	}
+	@Override
+	public String toString() {
+		return "Casilla [ fila=" + _fila + ", columna=" + _columna + " ]";
+	}
 	
 }

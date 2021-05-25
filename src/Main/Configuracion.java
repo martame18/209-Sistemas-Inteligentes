@@ -17,7 +17,7 @@ public class Configuracion {
 			
 	public Configuracion( ){
 		_numObstaculos	=  20;
-		_semilla		=  100;
+		_semilla		=  155623;
 		cfg_ini();
 	}
 	

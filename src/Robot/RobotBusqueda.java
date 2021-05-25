@@ -56,9 +56,11 @@ public class RobotBusqueda extends Robot {
 		//  1. GENERARSE EL PROBLEMA DE BÃšSQUEDA
 		//  2. BUSCAR LA SOLUCIÃ“N CON UN ALGORITMO DE BÃšSQUEDA
 		//  3. EJECUTAR LA SOLUCIÃ“N ENCONTRADA
+		
 		problem = new Problema(cfg);
 		BusquedaAmplitud ampli = new BusquedaAmplitud(problem);
 		ejecutarSolucion(ampli);
+		imprimirSolucion(ampli);
 	}
 
 private void ejecutarSolucion(BusquedaAmplitud ampli) {
@@ -111,8 +113,22 @@ private void ejecutarSolucion(BusquedaAmplitud ampli) {
 		if (ac.getAction() != null) {  //action es null cuando no puede avanzar en esa dirección (por un obstáculo o pared)
 			turnRight(normalRelativeAngleDegrees ( ac.grados() - getHeading()));
 			ahead(cfg.getTamCelda()); 
-			System.out.println("Movimiento: "+ac.getAction());
 		}
 	}
-	
+
+	public void imprimirSolucion(BusquedaAmplitud ampli) {
+		System.out.println("     Estados Abiertos:\n");
+		for(Casilla cas: ampli.getAbierto()) {
+			System.out.println(cas);
+		}
+		System.out.println("\n\n     Estados Cerrados:\n");
+		for(Casilla cer: ampli.getCerrados()) {
+			System.out.println(cer);
+		}
+		System.out.println("\n\n     Camino:\n");
+		for(Accion ac: ampli.getCamino()) {
+			System.out.println(ac.getCasillaA());
+		} System.out.println(problem.getFinale());
+		System.out.println("\n\n     Coste: "+ampli.getCoste());
+	}
 }

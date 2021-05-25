@@ -8,13 +8,13 @@ public class Accion {
 	public enum accion {izquierda,derecha,arriba,abajo};
 	
 	accion action;
-
+	Casilla casillaA, casillaB;
 	Configuracion cfg;
 	
 	//suponemos que la accion se produce entre casillas colindantes
 	public Accion(Casilla a, Casilla b){    // el robot se encuentra en a y quiere moverse a b
 		cfg = new Configuracion();
-		
+		casillaA = a;   casillaB = b;
 		if(comprobarObstaculo(b)){  //si b no está ocupado
 			
 			// hacemos varias comprobaciones para además asegurarnos de que son casillas colindantes
@@ -30,7 +30,7 @@ public class Accion {
 		}
 		else action = null;
 	}
-	
+
 	// este método indica false si la casilla a la que vamos a avanzar es un obstáculo o una pared
 	public boolean comprobarObstaculo(Casilla b) {
 		boolean pasar = true;
@@ -52,5 +52,14 @@ public class Accion {
 	
 	public accion getAction() {
 		return action;
+	}
+	
+
+	public Casilla getCasillaA() {
+		return casillaA;
+	}
+
+	public Casilla getCasillaB() {
+		return casillaB;
 	}
 }

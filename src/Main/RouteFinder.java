@@ -83,7 +83,7 @@ public class RouteFinder {
 		 */
 		
 		double fila = (nuevoProblema.getIniciale()._fila *cfg._tamCelda) + (cfg._tamCelda/2) ;
-		double columna = (nuevoProblema.getFinale()._columna *cfg._tamCelda) + (cfg._tamCelda/2) ;
+		double columna = (nuevoProblema.getIniciale()._columna *cfg._tamCelda) + (cfg._tamCelda/2) ;
 		double arriba = 0.0;		
 		existingRobots[0] = modelRobots[0];
 		robotSetups	  [0] = new RobotSetup(columna, fila, arriba);       //orientación inicial	
@@ -117,14 +117,7 @@ public class RouteFinder {
 			i++;
 		}
 		
-		//double sittingDuckFila = 325.0, sittingDuckColumna = 425.0, arriba = 0.0;	 //Temporal
-		/*
-		if (obstaculos > 0) {
-			existingRobots[1] 	= modelRobots[1];   //sittingDuck
-			robotSetups[1]		= new RobotSetup( sittingDuckFila, sittingDuckColumna ,  arriba);   
-			
-			System.out.println("Generados "+obstaculos+"  sitting ducks.");
-		}*/
+
 	}
 	
 	/***************
