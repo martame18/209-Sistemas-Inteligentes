@@ -74,12 +74,10 @@ public class Problema {
 			}
 		}
 		
-		printearCampo (cfg);
-		
 	}
 	
 	//método para mostrar por pantalla una matriz con el campo de batalla
-	private void printearCampo(Configuracion cfg) { 
+	public void printearCampo(Configuracion cfg) { 
 		int pfilas = cfg.getNumFila();     //   y = fila
 		int pcolums = cfg.getNumColumna(); //   x = columna
 		

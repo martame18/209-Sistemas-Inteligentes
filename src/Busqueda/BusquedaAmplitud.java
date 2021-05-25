@@ -31,13 +31,13 @@ public class BusquedaAmplitud extends Busqueda {
 		Casilla aux = null;
 		while (!abiertos.isEmpty() && camino.isEmpty()) { 
 			//    paso 2.1 - 2.2
-			// se pasar el primer nodo de abiertos a cerrados y se guarda en la casilla aux
+			// se pasa el primer nodo de abiertos a cerrados y se guarda en la casilla aux
 			aux = abiertos.get(0);
 			cerrados.add(abiertos.get(0));
 			abiertos.remove(0);   
 			
 			//    paso 2.3
-			// comprobamos si aux es la casilla final  
+			// comprueba si aux es la casilla final  
 			if (nuevoProblema.getFinale().compareTo(aux) == 0) {
 				camino = devuelveCamino(aux);
 			} else {
@@ -45,13 +45,6 @@ public class BusquedaAmplitud extends Busqueda {
 				expandir(aux);
 			}
 		}
-	}
-	
-	// método para pasar el primer nodo de abiertos a cerrados (y lo guarda en la casilla dada como parámetro)
-	private void pasoAbiertoCerrado(Casilla aux) {
-		aux = abiertos.get(0);
-		cerrados.add(abiertos.get(0));
-		abiertos.remove(0);
 	}
 	
 	// método para devolver el camino desde el inicio a la casilla dada pasando por sus nodos intermedios

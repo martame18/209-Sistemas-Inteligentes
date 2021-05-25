@@ -28,6 +28,7 @@ public class RobotBusqueda extends Robot {
 
 	Configuracion cfg;
 	Problema problem;
+	BusquedaAmplitud ampli;
 	
 	//The main method in every robot
 	public void run() {
@@ -58,7 +59,8 @@ public class RobotBusqueda extends Robot {
 		//  3. EJECUTAR LA SOLUCIÃ“N ENCONTRADA
 		
 		problem = new Problema(cfg);
-		BusquedaAmplitud ampli = new BusquedaAmplitud(problem);
+		problem.printearCampo(cfg);
+		ampli = new BusquedaAmplitud(problem);
 		ejecutarSolucion(ampli);
 		imprimirSolucion(ampli);
 	}
@@ -95,17 +97,38 @@ private void ejecutarSolucion(BusquedaAmplitud ampli) {
 	    	g.drawLine((tamCelda*j), 0, (tamCelda*j), columnaPixels);
 	    }
 	    
-	    
 	   // dibujar un cuadrado verde en la posición inicial
 	   g.setColor(Color.green);
 	   g.fillRect ((tamCelda*(problem.getIniciale()._columna + 1) -10),
 			    (tamCelda*(problem.getIniciale()._fila + 1) -10), 10, 10);
 
-	   
 	   //dibujar un cuadrado rojo en la posición final
 	   g.setColor(Color.red);
 	   g.fillRect ((tamCelda*(problem.getFinale()._columna + 1) -10),
 			    (tamCelda*(problem.getFinale()._fila + 1) -10), 10, 10);
+	   
+	   //dibujar un cuadrado azul en las casillas abiertas
+	   g.setColor(Color.cyan);
+	   for(Casilla cas : ampli.getAbierto()) {
+		   g.fillRect ((tamCelda*(cas._columna) +5),
+				    (tamCelda*(cas._fila ) +5), 5, 5);
+	   } 
+	 
+	 //dibujar un cuadrado naranja en las casillas cerradas
+	   g.setColor(Color.orange);
+	   for(Casilla cer : ampli.getCerrados()) {
+		   g.fillRect ((tamCelda*(cer._columna) +5),
+				    (tamCelda*(cer._fila ) +5), 5, 5);
+	   } 
+	   
+	   //dibujar un cuadrado rosa en las casillas del camino
+	   g.setColor(Color.magenta);
+	   for(Accion ac : ampli.getCamino()) {
+		   g.fillRect ((tamCelda*(ac.getCasillaA()._columna) +5),
+				    (tamCelda*(ac.getCasillaA()._fila ) +5), 5, 5);
+	   } 
+	   g.fillRect ((tamCelda*(problem.getFinale()._columna) +5),
+			    (tamCelda*(problem.getFinale()._fila ) +5), 5, 5);
 	}
 	
 	// método para hacer que el robot avance según la acción indicada
